@@ -43,16 +43,15 @@ function factorial(n) {
 }
 
 function getItineraryCount(stops) {
-  if (!Array.isArray(stops) || stops.length < 2) {
+  const totalStops = stops.length;
+
+  if (!Array.isArray(stops) || totalStops < 2) {
     return 0;
   }
 
-  if (stops.length === 2) {
+  if (totalStops === 2) {
     return 2;
   }
 
-  const len = stops.length;
-  const lenFactorial = factorial(len);
-
-  return lenFactorial * (len + (len - 3));
+  return factorial(totalStops) * (totalStops + (totalStops - 3));
 }
