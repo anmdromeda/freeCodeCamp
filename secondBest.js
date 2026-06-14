@@ -16,6 +16,7 @@ function getLaptopCost(laptops, budget) {
     return 0;
   }
 
+  // Remove duplicates
   const affordablePrices = Array.from(new Set([...laptops]));
 
   if (affordablePrices.length === 1) {
@@ -27,11 +28,9 @@ function getLaptopCost(laptops, budget) {
 
   let i = 0;
 
+  // Find first second afforable price
   while (i < affordablePrices.length) {
-    if (i > 0 && affordablePrices[i] <= budget) {
-      return affordablePrices[i];
-    }
-
+    if (i > 0 && affordablePrices[i] <= budget) return affordablePrices[i];
     i += 1;
   }
 
