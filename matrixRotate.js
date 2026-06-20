@@ -13,19 +13,21 @@ You should return [[3, 1], [4, 2]], which looks like this:
 */
 
 function rotate(matrix) {
-  if (!Array.isArray(matrix) || matrix.length !== matrix[0].length) {
+  if (
+    !Array.isArray(matrix) ||
+    matrix.length === 0 ||
+    !Array.isArray(matrix[0]) ||
+    matrix.length !== matrix[0].length
+  ) {
     return [];
   }
 
-  const rotated = [];
+  const n = matrix.length;
+  const rotated = Array.from({ length: n }, () => Array(n));
 
-  for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
-    for (let colIndex = 0; colIndex < matrix.length; colIndex++) {
-      if (!rotated[colIndex]) {
-        rotated[colIndex] = [];
-      }
-
-      rotated[colIndex][matrix.length - rowIndex - 1] = matrix[rowIndex][colIndex];
+  for (let rowIndex = 0; rowIndex < n; rowIndex++) {
+    for (let colIndex = 0; colIndex < n; colIndex++) {
+      rotated[colIndex][n - rowIndex - 1] = matrix[rowIndex][colIndex];
     }
   }
 
