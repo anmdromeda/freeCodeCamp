@@ -18,23 +18,21 @@ function tooMuchScreenTime(hours) {
     return false;
   }
 
+  for (const time of hours) {
+    if (!isSafeHour(time)) {
+      throw new Error("Invalid 24 hours value");
+    }
+  }
+
   const weekSize = hours.length;
   let total = 0;
 
   for (let i = 0; i < weekSize; i++) {
-    if (!isSafeHour(hours[i])) {
-      throw new Error("Invalid 24 hours value");
-    }
-
     if (hours[i] >= 10) {
       return true;
     }
 
     if (i <= weekSize - 3) {
-      if (!isSafeHour(hours[i + 1]) || !isSafeHour(hours[i + 2])) {
-        throw new Error("Invalid 24 hours value");
-      }
-
       const threeDaysSum = hours[i] + hours[i + 1] + hours[i + 2];
 
       if (threeDaysSum / 3 >= 8) {
