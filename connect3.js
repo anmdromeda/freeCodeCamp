@@ -32,7 +32,7 @@ function connectThree(matrix = []) {
 
       // Horizontal
       if (cell === matrix[row][col2] && cell === matrix[row][col3]) {
-        return [cell, [row, col], [row, col + 1], [row, col + 2]];
+        return [cell, [row, col], [row, col2], [row, col3]];
       }
 
       if (row <= size - 3) {
